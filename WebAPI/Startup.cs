@@ -28,6 +28,8 @@ namespace WebAPI
             // Autofac, Ninject, CastleWindsor, StructureMap, LightInject, DryInject --> IoC Container
             // AOP imkanlarý
             services.AddControllers();
+
+            services.AddCors();
             //services.AddSingleton<IProductService, ProductManager>();
             //services.AddSingleton<IProductDal, EfProductDal>();
 
@@ -58,6 +60,7 @@ namespace WebAPI
             {
                 app.UseDeveloperExceptionPage();
             }
+            app.UseCors(builder=>builder.WithOrigins("http://localhost:4200").AllowAnyHeader());
 
             app.UseHttpsRedirection();
 
